@@ -2,6 +2,8 @@ package command
 
 import (
 	"context"
+	"fmt"
+	"sync"
 	"time"
 
 	"github.com/satriahrh/autify-tht/adapters"
@@ -25,17 +27,33 @@ func init() {
 
 			var fetchContent adapters.FetchContent = fetchcontent.Construct()
 			var storeContent adapters.StoreContent = storecontent.Construct()
-			var usecase usecases.FetchUrl = fetchurl.Construct(fetchContent, storeContent)
 
+			var wg sync.WaitGroup
+
+			duplicatePreventionLookup := make(map[string]struct{})
 			for _, url := range urls {
-				ctx, cancelFunc := context.WithCancel(ctx)
-				defer cancelFunc()
-
-				err := usecase(ctx, url)
-				if err != nil {
-					return err
+				if _, isDuplicated := duplicatePreventionLookup[url]; isDuplicated {
+					continue
 				}
+				duplicatePreventionLookup[url] = struct{}{}
+
+				wg.Add(1)
+				go func(url string) {
+					var usecase usecases.FetchUrl = fetchurl.Construct(fetchContent, storeContent)
+					ctx, cancelFunc := context.WithCancel(ctx)
+					defer cancelFunc()
+
+					err := usecase(ctx, url)
+					if err != nil {
+						fmt.Println(time.Now().Local().String(), url, "ERROR", err.Error())
+					} else {
+						fmt.Println(time.Now().Local().String(), url, "SUCCESS")
+					}
+					wg.Done()
+				}(url)
+
 			}
+			wg.Wait()
 			return nil
 		},
 	}
