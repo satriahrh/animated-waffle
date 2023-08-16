@@ -1,4 +1,4 @@
-module github.com/sartriahrh/autify-tht
+module github.com/satriahrh/autify-tht
 
 go 1.15
 
