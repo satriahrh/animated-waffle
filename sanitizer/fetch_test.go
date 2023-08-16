@@ -23,7 +23,7 @@ func TestSanitizeFetch(t *testing.T) {
 		{"MultipleSuccess", []string{"https://google.com/", "https://facebook.com"}, nil},
 	} {
 		t.Run(row.Name, func(t *testing.T) {
-			actual := sanitizer.SanitizeFetch(row.Input)
+			actual := sanitizer.SanitizeFetch(nil, row.Input)
 			require.Equal(t, row.Expected, actual)
 		})
 	}
