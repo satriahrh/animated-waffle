@@ -1,7 +1,6 @@
-package fetchcontent
+package httpadapter
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -9,8 +8,8 @@ import (
 	"net/http"
 )
 
-func Construct() func(ctx context.Context, url string) (*bytes.Reader, error) {
-	return func(ctx context.Context, url string) (*bytes.Reader, error) {
+func ConstructFetchContent() func(ctx context.Context, url string) (io.ReadCloser, error) {
+	return func(ctx context.Context, url string) (io.ReadCloser, error) {
 		req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 		if err != nil {
 			log.Println("ERROR", "creating request", err.Error())
@@ -22,13 +21,6 @@ func Construct() func(ctx context.Context, url string) (*bytes.Reader, error) {
 			return nil, fmt.Errorf("error when fetching content")
 		}
 
-		bodyBts, err := io.ReadAll(resp.Body)
-		if err != nil {
-			log.Println("ERROR", "cannot read response", err.Error())
-			return nil, fmt.Errorf("error when fetching content")
-		}
-		resp.Body.Close()
-
-		return bytes.NewReader(bodyBts), nil
+		return resp.Body, nil
 	}
 }
