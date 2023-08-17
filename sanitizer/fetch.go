@@ -2,12 +2,10 @@ package sanitizer
 
 import (
 	"fmt"
-	"regexp"
 
+	"github.com/satriahrh/autify-tht/utils"
 	"github.com/spf13/cobra"
 )
-
-var urlRegex = regexp.MustCompile(`https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)`)
 
 var SanitizeFetch cobra.PositionalArgs = func(_ *cobra.Command, urls []string) error {
 	if len(urls) == 0 {
@@ -15,7 +13,7 @@ var SanitizeFetch cobra.PositionalArgs = func(_ *cobra.Command, urls []string) e
 	}
 
 	for _, url := range urls {
-		if !urlRegex.MatchString(url) {
+		if !utils.UrlRegex.MatchString(url) {
 			return fmt.Errorf("invalid url")
 		}
 	}
