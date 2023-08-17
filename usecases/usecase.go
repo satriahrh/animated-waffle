@@ -3,7 +3,7 @@ package usecases
 import (
 	"context"
 
-	"github.com/satriahrh/autify-tht/entity"
+	"github.com/satriahrh/animated-waffle/entity"
 )
 
 type FetchUrl func(ctx context.Context, url string) error

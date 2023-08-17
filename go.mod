@@ -1,4 +1,4 @@
-module github.com/satriahrh/autify-tht
+module github.com/satriahrh/animated-waffle
 
 go 1.20
 

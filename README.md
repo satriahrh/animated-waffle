@@ -1,8 +1,4 @@
-# Autify Take Home Test Assignment
-
-## The problem set
-
-https://autifyhq.notion.site/Backend-Engineer-Take-Home-Test-63032907b74341f8bd899018d685f03c
+# animated-waffle
 
 ## Approaching the solution
 

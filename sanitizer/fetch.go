@@ -3,7 +3,7 @@ package sanitizer
 import (
 	"fmt"
 
-	"github.com/satriahrh/autify-tht/utils"
+	"github.com/satriahrh/animated-waffle/utils"
 	"github.com/spf13/cobra"
 )
 

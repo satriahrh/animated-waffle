@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/satriahrh/autify-tht/command"
+	"github.com/satriahrh/animated-waffle/command"
 )
 
 func main() {

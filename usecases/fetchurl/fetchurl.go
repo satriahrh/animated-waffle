@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/satriahrh/autify-tht/adapters"
-	"github.com/satriahrh/autify-tht/entity"
-	"github.com/satriahrh/autify-tht/utils"
+	"github.com/satriahrh/animated-waffle/adapters"
+	"github.com/satriahrh/animated-waffle/entity"
+	"github.com/satriahrh/animated-waffle/utils"
 	"golang.org/x/net/html"
 )
 

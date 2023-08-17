@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/satriahrh/autify-tht/sanitizer"
+	"github.com/satriahrh/animated-waffle/sanitizer"
 	"github.com/stretchr/testify/require"
 )
 

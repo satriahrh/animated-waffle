@@ -6,12 +6,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/satriahrh/autify-tht/adapters/httpadapter"
-	"github.com/satriahrh/autify-tht/adapters/localfileadapter"
-	"github.com/satriahrh/autify-tht/sanitizer"
-	"github.com/satriahrh/autify-tht/usecases"
-	"github.com/satriahrh/autify-tht/usecases/fetchmetadata"
-	"github.com/satriahrh/autify-tht/usecases/fetchurl"
+	"github.com/satriahrh/animated-waffle/adapters/httpadapter"
+	"github.com/satriahrh/animated-waffle/adapters/localfileadapter"
+	"github.com/satriahrh/animated-waffle/sanitizer"
+	"github.com/satriahrh/animated-waffle/usecases"
+	"github.com/satriahrh/animated-waffle/usecases/fetchmetadata"
+	"github.com/satriahrh/animated-waffle/usecases/fetchurl"
 	"github.com/spf13/cobra"
 )
 
