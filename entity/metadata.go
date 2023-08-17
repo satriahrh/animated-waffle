@@ -18,7 +18,9 @@ type Metadata struct {
 
 func (v Metadata) JsonEncodeToIoReader() io.Reader {
 	jsonBytes := bytes.NewBuffer(nil)
-	json.NewEncoder(jsonBytes).Encode(v)
+	encoder := json.NewEncoder(jsonBytes)
+	encoder.SetIndent("", "\t")
+	encoder.Encode(v)
 	return jsonBytes
 }
 
